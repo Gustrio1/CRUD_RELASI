@@ -6,27 +6,57 @@
   </nav>
 
 
-  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
-    <div class="relative h-56 m-2.5 overflow-hidden text-white rounded-md">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-JSlcH82GdT_GeDSK-lfWlF3v1xf569MewA&s" alt="card-image" />
+
+
+  <div class="flex flex-row gap-5">
+    @foreach ($markets as $market) 
+    
+    
+    <div
+    class=" mt-5  block max-w-[18rem] rounded-lg bg-stone-500  text-surface shadow-secondary-1 dark:bg-dark dark:text-white">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat">
+      <img
+        class="rounded-lg "
+        src="{{ Storage::url('product/' . $market->product->gambar_product) }} " class="object-cover"
+        alt="" />
     </div>
-    <div class="p-4">
-      <h6 class="mb-2 text-slate-800 text-xl font-semibold">
-        Website Review Check
-      </h6>
-      <p class="text-slate-600 leading-normal font-light">
-        The place is close to Barceloneta Beach and bus stop just 2 min by walk
-        and near to &quot;Naviglio&quot; where you can enjoy the main night life in
-        Barcelona.
+    <div class="p-6">
+      <h5 class="mb-1 text-xl font-medium leading-tight">{{ $market->product->nama_product }}</h5>
+      <p class="text-base">
+        {{  $market->product->deskripsi_product }}
       </p>
     </div>
-    <div class="px-4 pb-4 pt-0 mt-2">
-      <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-        Read more
-      </button>
-      <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-        view
-      </button>
+    <ul class="w-full">
+      
+      <li
+        class="w-full border-b-2 border-neutral-100 border-opacity-100 px-6 py-3  dark:border-white/10">
+        {{ $market->company->nama_company}}
+      </li>
+      
+     
+        
+      <li
+        class="w-full border-neutral-100 border-opacity-100 px-6 py-3  dark:border-white/10">
+        {{ $market->nama_market }}
+      </li>
+      
+    </ul>
+    <div class="p-6">
+      <a
+        type="button"
+        class="pointer-events-auto me-5 inline-block cursor-pointer rounded text-base font-normal leading-normal text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-primary-400">
+        Card Link
+      </a>
+      <a
+        type="button"
+        class="pointer-events-auto inline-block cursor-pointer rounded text-base font-normal leading-normal text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-primary-400">
+        Another Link
+      </a>
     </div>
-  </div>  
+  </div>
+  @endforeach
+  </div>
+
+</div>  
+
 </x-layout>

@@ -33,4 +33,27 @@ class companyController extends Controller
         ]);
         return redirect()->route('company')->with(['success' => 'Data Berhasil Disimpan!']);
     }
+
+    public function edit($id)
+    {
+        $edit = Company::find($id);
+        return view('edit-company', compact('edit'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_company' => 'required',
+            'alamat_company' => 'required',
+            'kontak_company' => 'required',
+        ]);
+
+        $company = Company::find($id);
+        $company->update([
+            'nama_company' => $request->nama_company,
+            'alamat_company' => $request->alamat_company,
+            'kontak_company' => $request->kontak_company,
+        ]);
+        return redirect('/company')->with('success', 'Data Berhasil di Ubah!');
+    }
 }

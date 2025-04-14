@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nama_market');
-            $table->unsignedBigInteger('market_id');
-            $table->foreign('market_id')->references('id')->on('product');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('company_id');
         });
     }
 
